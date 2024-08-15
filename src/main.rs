@@ -45,10 +45,10 @@ pub fn main() -> Result<(), std::io::Error> {
     log!("Serial port: {} with baud rate {}", serial_path, baud_rate);
     let mut serial = serialport::new(serial_path, baud_rate)
         .open()
-        .unwrap_or_else(|_| {
+        .unwrap_or_else(|err| {
             panic!(
-                "Failed to open port: {} with baudrate {}",
-                serial_path, baud_rate
+                "Failed to open port: {} with baudrate {}: {}",
+                serial_path, baud_rate, err
             )
         });
 
