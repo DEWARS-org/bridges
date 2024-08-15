@@ -1,6 +1,6 @@
-FROM registry.access.redhat.com/ubi9/ubi:9.4-1181 as builder
+FROM docker.io/fedora:latest as builder
 
-RUN dnf install -y cmake gcc-c++ openssl-devel
+RUN dnf install -y cmake gcc-c++ openssl-devel rust-libudev-sys-devel
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
